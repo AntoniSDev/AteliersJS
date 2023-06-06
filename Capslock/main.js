@@ -1,4 +1,5 @@
-document.getElementById("input").addEventListener("keyup", function(event) {
+// Création de la function pour gérer les capslock et verr num
+function gestionClavier(event) {
     // Récupère l'état du Verrouillage Majuscule (Caps Lock)
     const capsLockEnabled = event.getModifierState("CapsLock");
   
@@ -8,8 +9,6 @@ document.getElementById("input").addEventListener("keyup", function(event) {
     // Sélectionne l'élément du message d'avertissement
     const warningElement = document.getElementById("warning");
   
-
-
     // Vérifie si à la fois le Verrouillage Majuscule et le Verrouillage Numérique sont activés
     if (capsLockEnabled && numLockEnabled) {
       // Affiche le message d'alerte correspondant
@@ -31,12 +30,14 @@ document.getElementById("input").addEventListener("keyup", function(event) {
       warningElement.textContent = "";
     }
   
-    
     // Affiche ou masque le message d'alerte en fonction des verrouillages activés
     if (capsLockEnabled || numLockEnabled) {
       warningElement.style.display = "block";
     } else {
       warningElement.style.display = "none";
     }
-  });
+  }
+  
+  document.getElementById("input").addEventListener("keyup", gestionClavier);
+  document.getElementById("input").addEventListener("click", gestionClavier);
   
