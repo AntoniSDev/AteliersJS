@@ -4,11 +4,8 @@ buttonCopy.addEventListener("click", function () {
   // Récupérer le textarea source
   const copyText = document.getElementById("copy-text");
 
-  // Sélectionner tout le texte dans le textarea source
-  copyText.select();
-
-  // Copier le texte sélectionné dans le presse-papiers
-  document.execCommand("copy");
+  // Copier et coller le texte dans le presse-papiers
+  navigator.clipboard.writeText(copyText.value);
 
   // TOASTR
   toastr["success"]("text copied !", "wow");
